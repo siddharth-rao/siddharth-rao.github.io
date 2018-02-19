@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+<head>
+    <title>
+        Sid Rao
+                    
+    </title>
+    <!-- Meta -->
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Language" content="en" />
+    <meta name="description" content="" />
+    <meta name="author" content="Sid Rao">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="/stylesheets/skeleton.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/layout.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/lightbox.css" />
+    <!-- Alternates -->
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <!-- JavaScripts -->
+    <script src="/javascript/jquery-1.7.2.min.js"></script>
+    <script src="/javascript/lightbox.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        
+                
+               
+                <div class="clearfix">
+                    <?xml version="1.0"?>
+<rss version="2.0">
+	<channel>
+		<title>Danne Stayskal</title>
+		<link>http://danne.stayskal.com/</link>
+		<managingEditor>danne@stayskal.com (Danne Stayskal)</managingEditor>
+		<webMaster>danne@stayskal.com (Danne Stayskal)</webMaster>
+		<description>Danne Stayskal's Essays</description>
+
+		<language>en-us</language>
+
+		<lastBuildDate><%= Time.now.rfc2822 %></lastBuildDate>
+		<ttl>60</ttl>
+
+		<generator>http://github.com/linenoise/portfolio/</generator>
+		<copyright>Copyright 1998-2014 Danne Stayskal. Unless otherwise noted, all content on this site is available under the Creative Commons BY-NC-SA 3.0 license.</copyright>
+
+		<% items.select{|i| i.identifier =~ /\/essays\/.+/}.sort{|a,b| b.attributes[:date] <=> a.attributes[:date]}[0..39].each do |essay| %>
+			<item>
+				<title><%= essay.attributes[:title] %></title>
+				<link>http://danne.stayskal.com<%= essay.identifier %></link>
+				<guid>http://danne.stayskal.com<%= essay.identifier %></guid>
+				<description><%= CGI.escapeHTML("<p>#{essay.attributes[:lede]}</p><p><a href=\"http://danne.stayskal.com#{essay.identifier}\">Continue reading&hellip;</a></p>") %></description>
+				<pubDate><%= Time.parse(essay.attributes[:date].to_s).rfc2822 %></pubDate>
+			</item>
+		<% end %>
+	</channel>
+</rss>
+                </div>
+                <hr style="border-bottom: 4px solid #BDD74B;">
+                <nav class="clearfix">
+                    <a href="/" style="padding-left: 30px;">home</a>
+                    <a href="/pages/about/">about</a>
+                    <a href="/pages/work/">work</a>
+                    <a href="/pages/publications/">publications</a>
+                    <a href="/pages/projects/">projects</a>
+                    <a href="/pages/courses/">courses</a>
+                    <a href="/pages/events/">events</a>
+                    <a href="/pages/teaching/">teaching</a>
+                    <a href="/pages/resources/">resources</a>
+                </nav>
+    </div>
+</body>
+
+</html>
